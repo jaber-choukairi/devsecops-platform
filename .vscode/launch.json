@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "DevsecopsBackendApplication",
+            "request": "launch",
+            "mainClass": "com.pfe.devsecops.DevsecopsBackendApplication",
+            "projectName": "devsecops-backend",
+            "cwd": "${workspaceFolder}/backend"
+        }
+    ]
+}
