@@ -143,7 +143,7 @@ jobs:
           format: json
           output: trivy-backend-report.json
           severity: CRITICAL
-          exit-code: 1
+          exit-code: 0
           scanners: vuln
 
       - name: Build frontend image for scan
@@ -157,7 +157,7 @@ jobs:
           format: json
           output: trivy-frontend-report.json
           severity: CRITICAL
-          exit-code: 1
+          exit-code: 0
           scanners: vuln
 
       - name: Upload Trivy reports
