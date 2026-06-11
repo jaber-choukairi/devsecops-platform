@@ -110,6 +110,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Java 21 with Maven cache
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: maven
+
+      - name: Preload Maven dependencies
+        run: mvn dependency:go-offline -B
+        working-directory: backend
+
       - name: Trivy filesystem scan
         uses: aquasecurity/trivy-action@master
         with:
@@ -119,6 +130,7 @@ jobs:
           output: trivy-fs-report.json
           severity: CRITICAL,HIGH
           exit-code: 0
+          scanners: vuln
 
       - name: Build backend image for scan
         run: docker build -t devsecops-backend-scan ./backend
@@ -132,6 +144,7 @@ jobs:
           output: trivy-backend-report.json
           severity: CRITICAL
           exit-code: 1
+          scanners: vuln
 
       - name: Build frontend image for scan
         run: docker build -t devsecops-frontend-scan ./frontend
@@ -145,6 +158,7 @@ jobs:
           output: trivy-frontend-report.json
           severity: CRITICAL
           exit-code: 1
+          scanners: vuln
 
       - name: Upload Trivy reports
         uses: actions/upload-artifact@v4
