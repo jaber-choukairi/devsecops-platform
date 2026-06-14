@@ -1,6 +1,6 @@
 # 🛡️ Plateforme DevSecOps Intelligente
 
-> **Projet de Fin d'Études (PFE) — 2024-2025**  
+> **Projet 2026**  
 > Détection, Analyse et Aide à la Remédiation des Vulnérabilités dans une Application Cloud-Native avec un Agent IA basé sur RAG
 
 ---
