@@ -1,6 +1,6 @@
 # 🛡️ Plateforme DevSecOps Intelligente
 
-> **Projet 2026**  
+> **Projet  Personelle 2026**  
 > Détection, Analyse et Aide à la Remédiation des Vulnérabilités dans une Application Cloud-Native avec un Agent IA basé sur RAG
 
 ---
@@ -18,7 +18,7 @@ L'application web de gestion de tickets d'incidents sert de cas d'usage principa
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                        PIPELINE CI/CD                           │
-│    GitHub Actions → SonarQube → Trivy → OWASP ZAP → K8s        │
+│    GitHub Actions → SonarQube → Trivy → OWASP ZAP → K8s         │
 └─────────────────────────┬───────────────────────────────────────┘
                           │
        ┌──────────────────┼──────────────────┐
