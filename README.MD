@@ -1,4 +1,4 @@
-# 🛡️ Plateforme DevSecOps Intelligente
+# 🛡️ Plateforme DevSecOgit statusps Intelligente
 
 > **Projet  Personelle 2026**  
 > Détection, Analyse et Aide à la Remédiation des Vulnérabilités dans une Application Cloud-Native avec un Agent IA basé sur RAG
@@ -101,55 +101,74 @@ L'application web de gestion de tickets d'incidents sert de cas d'usage principa
 
 ```
 devsecops-platform/
-├── backend/                    # Spring Boot (Java 17)
+├── backend/
+│   ├── docs/
 │   ├── src/
 │   │   └── main/
 │   │       ├── java/com/devsecops/
-│   │       │   ├── controller/     # REST Controllers
-│   │       │   ├── service/        # Business logic
-│   │       │   ├── repository/     # JPA Repositories
-│   │       │   ├── model/          # Entités JPA
-│   │       │   └── dto/            # Data Transfer Objects
+│   │       │   ├── controller/
+│   │       │   ├── service/
+│   │       │   ├── repository/
+│   │       │   ├── model/
+│   │       │   └── dto/
 │   │       └── resources/
 │   │           └── application.properties
-│   ├── Dockerfile
+│   ├── HELP.md
+│   ├── mvnw
+│   ├── mvnw.cmd
 │   └── pom.xml
 │
-├── frontend/                   # React + Vite + Tailwind
+├── frontend/
+│   ├── node_modules/
+│   ├── public/
 │   ├── src/
-│   │   ├── components/         # Composants réutilisables
-│   │   ├── pages/              # Pages principales
-│   │   ├── services/           # Appels API (Axios)
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
 │   │   └── App.jsx
+│   ├── .dockerignore
+│   ├── .env.local
+│   ├── .gitignore
 │   ├── Dockerfile
-│   └── vite.config.js
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── nginx.conf
+│   ├── package-lock.json
+│   ├── package.json
+│   └── README.md
 │
-├── nginx/                      # Reverse proxy
-│   └── nginx.conf
+├── infra/
 │
-├── k8s/                        # Manifests Kubernetes (Phase 6)
-│   ├── backend-deployment.yaml
-│   ├── frontend-deployment.yaml
-│   ├── configmap.yaml
-│   ├── secrets.yaml
-│   └── ingress.yaml
+├── monitoring/
+│   ├── grafana/
+│   ├── k8s/
+│   │   ├── backend-servicemonitor.yaml
+│   │   └── namespace.yaml
+│   ├── loki/
+│   ├── prometheus/
+│   └── promtail/
 │
-├── ci/                         # Pipelines CI/CD (Phase 4-5)
-│   └── .github/workflows/
-│       ├── build.yml
-│       └── devsecops.yml
+├── security/
 │
-├── monitoring/                 # Config Prometheus/Grafana (Phase 7)
-│   ├── prometheus.yml
-│   └── grafana/
-│
-├── ai-agent/                   # Agent IA RAG (Phase 8-9)
+├── ai-agent/
 │   ├── knowledge-base/
 │   │   ├── owasp-top10.md
 │   │   ├── trivy-reports/
 │   │   └── sonarqube-reports/
 │   ├── agent.py
 │   └── rag_config.py
+│
+├── k8s/
+│   ├── backend-deployment.yaml
+│   ├── frontend-deployment.yaml
+│   ├── configmap.yaml
+│   ├── secrets.yaml
+│   └── ingress.yaml
+│
+├── ci/
+│   └── .github/workflows/
+│       ├── build.yml
+│       └── devsecops.yml
 │
 ├── docker-compose.yml
 └── README.md
