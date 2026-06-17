@@ -1,3 +1,13 @@
 .env
 *.env
 !.env.example
+
+# Security reports
+security/reports/
+trivy-*.json
+zap-*.html
+zap-*.md
+report_*.html
+report_*.md
+
+infra/k8s/secrets.yaml
