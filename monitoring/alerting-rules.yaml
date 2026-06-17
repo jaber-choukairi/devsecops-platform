@@ -1,0 +1,59 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: devsecops-alerts
+  namespace: monitoring
+  labels:
+    release: monitoring
+spec:
+  groups:
+    - name: devsecops.rules
+      rules:
+        - alert: BackendDown
+          expr: kube_deployment_status_replicas_available{namespace="devsecops", deployment="backend-deployment"} == 0
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Backend indisponible"
+            description: "Aucun pod backend disponible."
+
+        - alert: FrontendDown
+          expr: kube_deployment_status_replicas_available{namespace="devsecops", deployment="frontend-deployment"} == 0
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Frontend indisponible"
+            description: "Aucun pod frontend disponible."
+
+        - alert: PodCrashLooping
+          expr: rate(kube_pod_container_status_restarts_total{namespace="devsecops"}[5m]) > 0
+          for: 2m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Pod en redémarrage"
+            description: "Un pod redémarre dans le namespace devsecops."
+
+        - alert: HighMemoryBackend
+          expr: sum(container_memory_usage_bytes{namespace="devsecops", container="backend"}) > 450000000
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Mémoire backend élevée"
+            description: "Le backend utilise plus de 450MB de RAM."
+
+        - alert: HighApiLatency
+          expr: |
+            sum(rate(http_server_requests_seconds_sum{namespace="devsecops"}[5m]))
+            /
+            sum(rate(http_server_requests_seconds_count{namespace="devsecops"}[5m]))
+            > 2
+          for: 3m
+          labels:
+            severity: warning
+          annotations:
+            summary: "Latence API élevée"
+            description: "Le temps de réponse moyen de l’API dépasse 2 secondes."
