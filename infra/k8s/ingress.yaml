@@ -20,6 +20,14 @@ spec:
                 port:
                   number: 8080
 
+          - path: /rag
+            pathType: Prefix
+            backend:
+              service:
+                name: rag-service
+                port:
+                  number: 8000
+
           - path: /
             pathType: Prefix
             backend:
@@ -27,3 +35,4 @@ spec:
                 name: frontend-service
                 port:
                   number: 80
+          

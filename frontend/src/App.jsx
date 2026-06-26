@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard'
 import TicketList from './pages/TicketList'
 import TicketCreate from './pages/TicketCreate'
 import TicketDetail from './pages/TicketDetail'
+import AIChat from "./components/AIChat";
 
 export default function App() {
   return (
@@ -20,6 +21,8 @@ export default function App() {
             <Route path="/tickets/:id" element={<TicketDetail />} />
           </Routes>
         </main>
+
+        <AIChat />
       </div>
     </BrowserRouter>
   )

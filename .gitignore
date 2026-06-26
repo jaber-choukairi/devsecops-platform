@@ -11,3 +11,14 @@ report_*.html
 report_*.md
 
 infra/k8s/secrets.yaml
+
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Chroma
+ai-agent/rag/chroma_db/
+
+# Ollama cache
+*.bin
