@@ -24,6 +24,11 @@ export default function Navbar() {
           Tickets
         </Link>
 
+        {/* ← Ajoute cette ligne */}
+        <Link to="/ai" className={linkClass('/ai')}>
+          🤖 Agent IA
+        </Link>
+
         <Link
           to="/tickets/new"
           className="ml-auto bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700"
